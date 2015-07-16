@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+    <script src="https://fb.me/react-0.13.3.min.js"></script>
+
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/select-popover.css">
 
@@ -31,6 +34,25 @@
     </div>
 
 
-    <script src="scripts/main.js"></script>
+    <script src="scripts/select-popover.js"></script>
+    <script>
+        var OPTIONS = [
+            {label: "CSS", value: "css"},
+            {label: "JavaScript", value: "javascript"},
+            {label: "Ruby on Rails", value: "rubyonrails"},
+            {label: "Ruby", value: "ruby"},
+            {label: "React", value: "react"},
+            {label: "Node.js", value: "nodejs"},
+            {label: "HTML", value: "html"}
+        ];
+
+        var SELECTFIELDNAME = "my-select";
+
+        React.render(
+            React.createElement(SelectPopover, {options: OPTIONS, name: SELECTFIELDNAME}),
+            document.getElementById("root")
+        );
+
+    </script>
 </body>
 </html>
