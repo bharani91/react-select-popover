@@ -7,7 +7,7 @@ This creates a hidden multi select field. You can submit it as part of a form or
 ### [Demo](http://bharani91.github.io/react-select-popover)
 
 
-![React Select Popover](./react-select-popover-screenshot.gif?raw=true)
+![React Select Popover](./react-select-popover.gif?raw=true)
 
 
 ### Usage
@@ -35,9 +35,8 @@ var options = [
     { label: "JavaScript", value: "js" },
     { label: "Ruby on Rails", value: "ror" },
 ];
-
 var selectFieldName = "my-select";
-var selectPlaceholder = "Choose some options..."
+var selectPlaceholder = "Choose some options...";
 var onChange = function(obj) {
     console.log("EVENT", obj.event); // "added" or "removed"
     console.log("ITEM", obj.item);   // item that has been added/removed { label: '...', value: '...' }
@@ -57,7 +56,12 @@ React.render(
 ```
 
 
-**[bharanim](http://twitter.com/bharani91)**
+
+
+
+
+
+**[bharanim](https://www.resumonk.com/bharani) | [Twitter](http://twitter.com/bharani91)**
 
 -----------------
 
