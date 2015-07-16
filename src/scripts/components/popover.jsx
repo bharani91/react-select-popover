@@ -7,11 +7,15 @@ var Popover = React.createClass({
     var searchTerm = this.props.searchTerm.toString().toLowerCase();
 
     this.props.options.forEach(function(option, index) {
-      var optionSlug = option.toString().toLowerCase();
+      var label = option.label,
+          value = option.value,
+          labelSlug = label.toString().toLowerCase();
 
-      if(this.props.selectedValues.indexOf(option) >= 0 || (searchTerm && optionSlug.indexOf(searchTerm) == -1 ) ) return;
+      var opt = this.props.isInSelectedValues(option);
 
-      tags.push(<PopoverItem key={index} name={option} selectValue={this.props.selectValue} />);
+      if(opt && this.props.selectedValues.indexOf(opt) >= 0 || (searchTerm && labelSlug.indexOf(searchTerm) == -1 ) ) return;
+
+      tags.push(<PopoverItem key={index} label={label} value={value} selectValue={this.props.selectValue} />);
     }, this);
     
     if(!tags.length) {

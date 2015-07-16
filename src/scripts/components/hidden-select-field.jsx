@@ -4,16 +4,19 @@ var HiddenSelectField = React.createClass({
   render: function() {
     var options = [];
     
-    this.props.options.forEach(function(option, index) {
-      if(this.props.selectedValues.indexOf(option) >= 0) {
-        options.push(<option key={index} selected="selected" value={option}>{option}</option>);
-      } else {
-        options.push(<option key={index} value={option}>{option}</option>);
-      }
-    }, this);
-    
+    this.props.options.map(function(option, index) {
+      var label = option.label,
+          value = option.value;
+
+        options.push(<option key={index} value={value}>{label}</option>);
+    });
+
+    var values = this.props.selectedValues.map(function(option) {
+      return option.value;
+    });
+
     return (
-      <select name={this.props.name} className="hidden-select-box" multiple>
+      <select ref="hiddenSelectBox" value={values} name={this.props.name} className="hidden-select-box" multiple="true">
         {options}
       </select>
     )

@@ -3,13 +3,17 @@ var React = require("react");
 var SelectBoxItem = React.createClass({
   handleRemove: function(e) {
     e.preventDefault();
-    this.props.unselectValue(this.props.name);
+    var objToUnselect = {
+      label: this.props.label,
+      value: this.props.value
+    }
+    this.props.unselectValue(objToUnselect);
   },
   render: function() {
     return (
       <span className="tag" >
         <button onClick={this.handleRemove}>&times;</button>
-        {this.props.name}
+        {this.props.label}
       </span>
     )
   }

@@ -9,7 +9,7 @@ var SelectInput = React.createClass({
   
   handleBackspace: function(e) {
     if(this.props.searchTerm.length == 0 && e.keyCode == 8) {
-      this.props.removeLast();
+      this.props.unselectValue();
     }
   },
   

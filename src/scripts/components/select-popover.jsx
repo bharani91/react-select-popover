@@ -6,16 +6,18 @@ var HiddenSelectField   = require("./hidden-select-field"),
 
 var SelectPopover = React.createClass({
   propTypes: {
-    options             : React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
+    options             : React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
     name                : React.PropTypes.string,
     selectPlaceholder   : React.PropTypes.string,
     componentClassNames : React.PropTypes.arrayOf(React.PropTypes.string),
     selectBoxClassNames : React.PropTypes.arrayOf(React.PropTypes.string),
-    popoverClassNames   : React.PropTypes.arrayOf(React.PropTypes.string)
+    popoverClassNames   : React.PropTypes.arrayOf(React.PropTypes.string),
+    onChange            : React.PropTypes.func
   },
 
   getDefaultProps: function() {
     return {
+        options             : [],
         name                : "react-select-popover",
         selectPlaceholder   : "Choose some options",
         componentClassNames : ["react-select-popover"],
@@ -32,25 +34,57 @@ var SelectPopover = React.createClass({
     }
   },
 
-  selectValue: function(name) {  
+  selectValue: function(selectedObj) {  
     var selectedValues = this.state.selectedValues;
-    selectedValues.push(name);
+    selectedValues.push(selectedObj);
     
     this.setState({
       selectedValues: selectedValues,
       searchTerm: ""
     });
+
+    this.triggerOnChange({
+      event: "added",
+      item: selectedObj,
+      value: this.state.selectedValues
+    });
+
   },
   
-  unselectValue: function(name) {
+  unselectValue: function(objToUnselect) {
     var selectedValues = this.state.selectedValues;
-    var index = selectedValues.indexOf(name);
+
+    if(!objToUnselect) {
+      var last = selectedValues[selectedValues.length - 1];
+      objToUnselect = last ? last : null;
+    }
+
+    var selected = this.isInSelectedValues(objToUnselect);
+    if(selected) {
+      var index = selectedValues.indexOf(selected);
+      selectedValues.splice(index, 1);
     
-    selectedValues.splice(index, 1);
-    
-    this.setState({
-      selectedValues: selectedValues
+      this.setState({
+        selectedValues: selectedValues
+      });
+
+      this.triggerOnChange({
+        event: "removed",
+        item: selected,
+        value: this.state.selectedValues
+      });
+
+    }
+  },
+
+  isInSelectedValues: function(object) {
+    if(!object) return;
+
+    var result = this.state.selectedValues.filter(function(obj) {
+      return obj.label == object.label && obj.value == object.value;
     });
+
+    return result ? result[0] : null;
   },
   
   handleSearch: function(term) {
@@ -72,17 +106,10 @@ var SelectPopover = React.createClass({
     });
   },
   
-  removeLast: function() {
-    var selectedValues = this.state.selectedValues;
-    
-    if(selectedValues.length) {
-      selectedValues.pop();
+  triggerOnChange: function(eventObject) {
+    if(this.props.onChange) {
+      this.props.onChange(eventObject);
     }
-    
-    this.setState({
-      selectedValues: selectedValues
-    });
-    
   },
   
   render: function() {
@@ -92,7 +119,8 @@ var SelectPopover = React.createClass({
             selectedValues={this.state.selectedValues} 
             name={this.props.name} 
             options={this.props.options} 
-            ref={this.props.ref} 
+            isInSelectedValues={this.isInSelectedValues}
+
         />
         
         <SelectBox 
@@ -102,8 +130,7 @@ var SelectPopover = React.createClass({
             searchTerm={this.state.searchTerm} 
             focusIn={this.focusIn} 
             focus={this.state.focus} 
-            focusOut={this.focusOut} 
-            removeLast={this.removeLast}
+            focusOut={this.focusOut}
             selectPlaceholder={this.props.selectPlaceholder}
             selectBoxClassNames={this.props.selectBoxClassNames}
         />
@@ -115,6 +142,7 @@ var SelectPopover = React.createClass({
             searchTerm={this.state.searchTerm} 
             focus={this.state.focus} 
             popoverClassNames={this.props.popoverClassNames}
+            isInSelectedValues={this.isInSelectedValues}
         />
         
       </div>

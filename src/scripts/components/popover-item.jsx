@@ -3,12 +3,16 @@ var React = require("react");
 var PopoverItem = React.createClass({
   handleClick: function(e) {
     e.preventDefault();
-    this.props.selectValue(this.props.name);
+    var selectedObj = {
+      label: this.props.label,
+      value: this.props.value
+    }
+    this.props.selectValue(selectedObj);
   },
   render: function() {
     return (
       <span className="tag ignore-react-onclickoutside" onClick={this.handleClick} >
-        {this.props.name}
+        {this.props.label}
       </span>
     );
   }

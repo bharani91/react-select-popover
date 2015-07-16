@@ -17,8 +17,11 @@ var SelectBox = React.createClass({
   
   render: function() {
     var selectedItems = this.props.selectedValues.map(function(item, index) {
+      var label = item.label,
+          value = item.value;
+
       return (
-        <SelectBoxItem name={item} key={index} unselectValue={this.props.unselectValue} />
+        <SelectBoxItem label={label} value={value} key={index} unselectValue={this.props.unselectValue} />
       )
     }, this);
     
@@ -37,7 +40,7 @@ var SelectBox = React.createClass({
             focus={this.props.focus} 
             searchTerm={this.props.searchTerm} 
             handleSearch={this.props.handleSearch} 
-            removeLast={this.props.removeLast} 
+            unselectValue={this.props.unselectValue} 
         />
         
       </div>
