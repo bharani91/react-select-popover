@@ -12,8 +12,6 @@ var gulp            = require("gulp"),
     sourcemaps      = require('gulp-sourcemaps'),
     source          = require('vinyl-source-stream'),
     shim            = require('browserify-shim'),
-    capitalize      = require('capitalize'),
-    camelCase       = require('camelcase'),
     react           = require('gulp-react');
 
 
@@ -57,18 +55,18 @@ function readPackageJSON () {
     var peerDependencies = Object.keys(pkg.peerDependencies);
 
     return {
-        name: pkg.name,
         deps: dependencies.concat(peerDependencies),
         aliasify: pkg.aliasify
     };
 }
 
+
 gulp.task('browserify-standalone', function() {
     var pkg = readPackageJSON();
-    var name = capitalize(camelCase(pkg.name));
+    var pkgName = 'select-popover';
 
     var standalone = browserify('./src/scripts/components/select-popover.jsx', {
-        standalone: name,
+        standalone: 'SelectPopover',
         extensions: ['.jsx']
     })
     .transform(reactify)
@@ -80,9 +78,9 @@ gulp.task('browserify-standalone', function() {
 
     return standalone.bundle()
         .on('error', errorHandler)
-        .pipe(source(pkg.name + '.js'))
+        .pipe(source(pkgName + '.js'))
         .pipe(gulp.dest('./dist'))
-        .pipe(rename(pkg.name + '.min.js'))
+        .pipe(rename(pkgName + '.min.js'))
         .pipe(streamify(uglify()))
         .pipe(gulp.dest('./dist'));
 });

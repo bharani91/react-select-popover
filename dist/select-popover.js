@@ -131,24 +131,20 @@ var SelectBox = React.createClass({displayName: "SelectBox",
   },
   
   render: function() {
-    var selectedItems = this.props.selectedValues.map(function(item) {
+    var selectedItems = this.props.selectedValues.map(function(item, index) {
       return (
-        React.createElement(SelectBoxItem, {name: item, unselectValue: this.props.unselectValue})
+        React.createElement(SelectBoxItem, {name: item, key: index, unselectValue: this.props.unselectValue})
       )
     }, this);
     
     var classNames = this.props.selectBoxClassNames;
-
-    if(this.props.focus == "in") {
-      classNames.push("active");
-    }
 
     if(!selectedItems.length && this.props.focus != "in") {
         selectedItems = React.createElement("p", {className: "empty-list"}, this.props.selectPlaceholder)
     }
     
     return (
-      React.createElement("div", {className: classNames.join(" "), onClick: this.handleClick}, 
+      React.createElement("div", {className: classNames.join(" ") + (this.props.focus == "in" ? " active" : ""), onClick: this.handleClick}, 
 
         selectedItems, 
         
