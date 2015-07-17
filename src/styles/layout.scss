@@ -1,19 +1,20 @@
 body {
   font: 12px/1.3 Arial, sans-serif;
-  width: 500px;
+  max-width: 500px;
   margin: 50px auto;
   background: #eee;
 }
 
 #container {
-    width: 100%;
-    min-height: 300px;
-    max-width: 500px;
-    margin: 50px auto;
+    // min-height: 00px;
+    // max-width: 500px;
+    // margin: 50px auto;
     background: #fff;
     padding: 20px;
     border: 1px solid #ccc;
     box-shadow: 0 1px 2px rgba(0,0,0,0.15), 0 2px 5px rgba(0,0,0,0.05);
+
+
 
     .heading {
         h1 {
@@ -28,12 +29,22 @@ body {
 
     .footnote {
         color: #949494;
-        margin-top: 150px;
+        // margin-top: 150px;
 
         a {
             color: #6E74E7
         }
     }
+
+    @media(max-width: 800px) {
+        width: 80%;
+        margin: 0 auto;
+
+        .react-select-popover {
+            margin: 30px auto;
+            width: 80%;
+        }
+    } 
 }
 
 .text-center {

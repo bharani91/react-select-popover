@@ -134,7 +134,7 @@ var SelectBoxItem   = require("./select-box-item"),
 
 var SelectBox = React.createClass({displayName: "SelectBox",
   mixins: [
-    (typeof window !== "undefined" ? window['onClickOutside'] : typeof global !== "undefined" ? global['onClickOutside'] : null)
+    (typeof window !== "undefined" ? window['OnClickOutside'] : typeof global !== "undefined" ? global['OnClickOutside'] : null)
   ],
  
   handleClickOutside: function(evt) {
@@ -194,7 +194,7 @@ var SelectInput = React.createClass({displayName: "SelectInput",
   },
   
   handleBackspace: function(e) {
-    if(this.props.searchTerm.length == 0 && e.keyCode == 8) {
+    if(this.props.searchTerm.length == 0 && (e.keyCode == 8 || e.keyCode == 46)) {
       this.props.unselectValue();
     }
   },
@@ -210,7 +210,13 @@ var SelectInput = React.createClass({displayName: "SelectInput",
   
   render: function() {
     return (
-      React.createElement("input", {type: "text", className: "search-input", ref: "searchInput", onKeyDown: this.handleBackspace, value: this.props.searchTerm, onChange: this.handleSearch})
+      React.createElement("input", {type: "text", 
+              className: "search-input", 
+              ref: "searchInput", 
+              onKeyDown: this.handleBackspace, 
+              value: this.props.searchTerm, 
+              onChange: this.handleSearch}
+      )
     );
   }
 });

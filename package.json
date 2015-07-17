@@ -49,6 +49,6 @@
   "browserify-shim": {
     "classnames": "global:classNames",
     "react": "global:React",
-    "react-onclickoutside": "global:onClickOutside"
+    "react-onclickoutside": "global:OnClickOutside"
   }
 }

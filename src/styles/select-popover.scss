@@ -1,7 +1,6 @@
 .react-select-popover {
   position: relative;
   display: block;
-  margin: 10px auto;
 
   .hidden-select-box {
     display: none;
@@ -11,11 +10,11 @@
     position: absolute;
     left: 0;
     box-sizing: border-box;
-    width: 28em;
+    width: 100%;
+    max-width: 28em;
     padding: 1em;
     border: 1px solid #dadada;
     background: #fff;
-    margin: 0;
     margin-top: 20px;
 
     .tag {
@@ -64,12 +63,13 @@
   }
 
   .select-input {
-    width: 28em;
-    min-height: 28px;
+    width: 100%;
+    max-width: 28em;
+    min-height: 30px;
     border: 1px solid #dadada;
     border-radius: 2px;
     background: #fff;
-    /* padding: 10px; */
+    padding: 10px;
     margin: 0;
     padding: 0;
 
@@ -81,7 +81,9 @@
     .empty-list {
       color: #ccc;
       display: inline-block;
+      line-height: 12px;
       padding-left: 10px;
+      font-size: 12px;
     }
 
     .search-input {
@@ -133,7 +135,7 @@
       color: lighten(#333, 40%);
       font-size: 14px;
       line-height: 12px;
-      padding: 0 2px;
+      padding: 0 6px 0 2px;
       position: relative;
       top: -1px;
 
