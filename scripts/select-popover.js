@@ -134,7 +134,7 @@ var SelectBoxItem   = require("./select-box-item"),
 
 var SelectBox = React.createClass({displayName: "SelectBox",
   mixins: [
-    (typeof window !== "undefined" ? window['onClickOutside'] : typeof global !== "undefined" ? global['onClickOutside'] : null)
+    (typeof window !== "undefined" ? window['OnClickOutside'] : typeof global !== "undefined" ? global['OnClickOutside'] : null)
   ],
  
   handleClickOutside: function(evt) {
