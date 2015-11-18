@@ -186,7 +186,7 @@ module.exports = SelectBox;
 },{"./select-box-item":4,"./select-input":6}],6:[function(require,module,exports){
 (function (global){
 var React = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null),
-    ReactDOM = require("react-dom");
+    ReactDOM = (typeof window !== "undefined" ? window['ReactDOM'] : typeof global !== "undefined" ? global['ReactDOM'] : null);
 
 var SelectInput = React.createClass({displayName: "SelectInput",
 
@@ -226,7 +226,7 @@ var SelectInput = React.createClass({displayName: "SelectInput",
 module.exports = SelectInput;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"react-dom":undefined}],7:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 (function (global){
 var HiddenSelectField   = require("./hidden-select-field"),
     SelectBox           = require("./select-box"),
