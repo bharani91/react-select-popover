@@ -14,6 +14,7 @@ var SelectBox = React.createClass({
   handleClick: function() {
     this.props.focusIn();
   },
+
   
   render: function() {
     var selectedItems = this.props.selectedValues.map(function(item, index) {

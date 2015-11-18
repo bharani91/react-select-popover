@@ -19,7 +19,7 @@ var Popover = React.createClass({
     }, this);
     
     if(!tags.length) {
-      tags.push(<span className="empty-list">No Options to show</span>);
+      tags.push(<span key="none" className="empty-list">No Options to show</span>);
     }
     
     var classNames = this.props.popoverClassNames;

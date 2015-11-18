@@ -1,9 +1,10 @@
-var React = require("react");
+var React = require("react"),
+    ReactDOM = require("react-dom");
 
 var SelectInput = React.createClass({
 
   handleSearch: function(e) {
-    var searchInput = React.findDOMNode(this.refs.searchInput);
+    var searchInput = ReactDOM.findDOMNode(this.refs.searchInput);
     this.props.handleSearch(searchInput.value);
   },
   
@@ -14,7 +15,7 @@ var SelectInput = React.createClass({
   },
   
   componentDidUpdate: function() {
-    var input = React.findDOMNode(this.refs.searchInput);
+    var input = ReactDOM.findDOMNode(this.refs.searchInput);
     if(this.props.focus == "in") {
       input.focus();
     } else {

@@ -18,7 +18,7 @@ var HiddenSelectField = React.createClass({displayName: "HiddenSelectField",
     });
 
     return (
-      React.createElement("select", {ref: "hiddenSelectBox", value: values, name: this.props.name, className: "hidden-select-box", multiple: "true"}, 
+      React.createElement("select", {ref: "hiddenSelectBox", defaultValue: values, name: this.props.name, className: "hidden-select-box", multiple: "true"}, 
         options
       )
     )
@@ -77,7 +77,7 @@ var Popover = React.createClass({displayName: "Popover",
     }, this);
     
     if(!tags.length) {
-      tags.push(React.createElement("span", {className: "empty-list"}, "No Options to show"));
+      tags.push(React.createElement("span", {key: "none", className: "empty-list"}, "No Options to show"));
     }
     
     var classNames = this.props.popoverClassNames;
@@ -144,6 +144,7 @@ var SelectBox = React.createClass({displayName: "SelectBox",
   handleClick: function() {
     this.props.focusIn();
   },
+
   
   render: function() {
     var selectedItems = this.props.selectedValues.map(function(item, index) {
@@ -184,12 +185,13 @@ module.exports = SelectBox;
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./select-box-item":4,"./select-input":6}],6:[function(require,module,exports){
 (function (global){
-var React = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+var React = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null),
+    ReactDOM = require("react-dom");
 
 var SelectInput = React.createClass({displayName: "SelectInput",
 
   handleSearch: function(e) {
-    var searchInput = React.findDOMNode(this.refs.searchInput);
+    var searchInput = ReactDOM.findDOMNode(this.refs.searchInput);
     this.props.handleSearch(searchInput.value);
   },
   
@@ -200,7 +202,7 @@ var SelectInput = React.createClass({displayName: "SelectInput",
   },
   
   componentDidUpdate: function() {
-    var input = React.findDOMNode(this.refs.searchInput);
+    var input = ReactDOM.findDOMNode(this.refs.searchInput);
     if(this.props.focus == "in") {
       input.focus();
     } else {
@@ -224,7 +226,7 @@ var SelectInput = React.createClass({displayName: "SelectInput",
 module.exports = SelectInput;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],7:[function(require,module,exports){
+},{"react-dom":undefined}],7:[function(require,module,exports){
 (function (global){
 var HiddenSelectField   = require("./hidden-select-field"),
     SelectBox           = require("./select-box"),

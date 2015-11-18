@@ -16,7 +16,7 @@ var HiddenSelectField = React.createClass({
     });
 
     return (
-      <select ref="hiddenSelectBox" value={values} name={this.props.name} className="hidden-select-box" multiple="true">
+      <select ref="hiddenSelectBox" defaultValue={values} name={this.props.name} className="hidden-select-box" multiple="true">
         {options}
       </select>
     )

@@ -41,10 +41,11 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "peerDependencies": {
-    "react": "^0.13.3"
+    "react": "^0.14.2"
   },
   "dependencies": {
-    "react-onclickoutside": "^0.2.4"
+    "react-dom": "^0.14.2",
+    "react-onclickoutside": "4.0.1"
   },
   "browserify-shim": {
     "classnames": "global:classNames",

@@ -1,5 +1,7 @@
 var SelectPopover   = require("./components/select-popover"),
-    React           = require('react');
+    React           = require('react'),
+    ReactDOM    = require("react-dom");
+
 
 var OPTIONS = [
     { label: "CSS", value: "css" },
@@ -16,7 +18,7 @@ var onChange = function(val) {
     console.log(val);
 }
 
-React.render(
+ReactDOM.render(
     <SelectPopover 
         options={OPTIONS} 
         name={SELECTFIELDNAME} 
