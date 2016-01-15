@@ -35,14 +35,14 @@ gulp.task('webserver', function() {
 gulp.task('browserify', function(){
     var bundler = browserify({
         entries: ['./src/scripts/main.jsx'],
-        transform: [reactify], 
-        debug: true, 
+        transform: [reactify],
+        debug: true,
         extensions: ['.jsx'],
-        cache: {}, packageCache: {}, fullPaths: true 
+        cache: {}, packageCache: {}, fullPaths: true
     });
 
     bundler
-    .bundle() 
+    .bundle()
     .on('error', errorHandler)
     .pipe(source('main.js'))
     .pipe(gulp.dest('./example/scripts'));
@@ -111,5 +111,5 @@ gulp.task('watch', function() {
     gulp.watch('./src/scripts/**/*.jsx', ['browserify']);
 });
 
-gulp.task('default', ['browserify', 'sass', 'webserver', 'watch']);
+gulp.task('default', ['browserify', 'lib', 'sass', 'webserver', 'watch']);
 gulp.task('dist', ['browserify-standalone', 'sass', 'cssdist']);

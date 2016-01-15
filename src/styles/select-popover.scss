@@ -1,3 +1,9 @@
+$lightGray: #dadada;
+$white: #fff;
+$darkGray: #333;
+$shadow: rgba(0,0,0,0.2);
+$primary: #4C66BE;
+
 .react-select-popover {
   position: relative;
   display: block;
@@ -13,8 +19,8 @@
     width: 100%;
     max-width: 28em;
     padding: 1em;
-    border: 1px solid #dadada;
-    background: #fff;
+    border: 1px solid $lightGray;
+    background: $white;
     margin-top: 20px;
 
     .tag {
@@ -34,7 +40,7 @@
   }
 
   .popover, .popover:before {
-    box-shadow: 0 0 2px rgba(0,0,0,0.2);  
+    box-shadow: 0 0 2px $shadow;
   }
 
   .popover:before,
@@ -44,8 +50,8 @@
     position: absolute;
     width: 15px;
     height: 15px;
-    border: 1px solid #dadada;
-    background: #fff;
+    border: 1px solid $lightGray;
+    background: $white;
     transform: rotate(45deg);
   }
 
@@ -57,7 +63,7 @@
   .popover.arrow-top:after {
     bottom: 100%;
     left: 20px;
-    margin-bottom: -7px; 
+    margin-bottom: -7px;
     border-bottom: 0;
     border-right: 0;
   }
@@ -66,9 +72,9 @@
     width: 100%;
     max-width: 28em;
     min-height: 30px;
-    border: 1px solid #dadada;
+    border: 1px solid $lightGray;
     border-radius: 2px;
-    background: #fff;
+    background: $white;
     padding: 10px;
     margin: 0;
     padding: 0;
@@ -99,7 +105,7 @@
       border: none;
       background: transparent;
       box-shadow: none;
-      color: #333;
+      color: $darkGray;
     }
   }
 
@@ -111,19 +117,19 @@
     font-size: 15px;
     margin: 5px;
 
-    background-color: #e4e4e4;
+    background-color: $lightGray;
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#f4f4f4', GradientType=0 );
-    background-image: linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+    background-image: linear-gradient(to bottom, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
 
-    color: #333;
-    box-shadow: 0 0 2px #ffffff inset, 0 1px 2px rgba(0,0,0,0.15);
+    color: $darkGray;
+    box-shadow: 0 0 2px $white inset, 0 1px 2px $shadow;
     border: 1px solid darken(#f0f0f0, 20%);
 
     &.active {
-      border-color: #4C66BE;
-      color: #4C66BE;
+      border-color: $primary;
+      color: $primary;
       button {
-        color: #4C66BE;
+        color: $primary;
       }
     }
 
@@ -132,7 +138,7 @@
       border: none;
       outline: none;
       cursor: pointer;
-      color: lighten(#333, 40%);
+      color: lighten($darkGray, 40%);
       font-size: 14px;
       line-height: 12px;
       padding: 0 6px 0 2px;
@@ -140,13 +146,8 @@
       top: -1px;
 
       &:hover {
-        color: #333;
+        color: $darkGray;
       }
     }
   }
 }
-
-
-
-
-
