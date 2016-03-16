@@ -1,6 +1,6 @@
 {
   "name": "react-select-popover",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A react component to convert a select box into a nifty popover with prepopulated options",
   "main": "lib/select-popover.js",
   "scripts": {
